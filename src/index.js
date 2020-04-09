@@ -1,13 +1,41 @@
-import React from 'react';
+import React  , {useContext ,useReducer}from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './output.css';
+//import Demo from './Demo';
+
+import TodosContext from "./context";
+import todosReducer from "./reducer";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+import Bingo from "./components/Bingo";
+
 import * as serviceWorker from './serviceWorker';
 
+const App  = () =>{
+    const initialState = useContext(TodosContext);
+    const [state ,dispatch] = useReducer(todosReducer ,initialState);
+
+    return (
+        <>
+            <div className="bg-gray-300 w-full h-full">
+                <TodosContext.Provider value={{state , dispatch}}>
+                    <TodoForm />
+                    <TodoList/>
+                    <Bingo/>
+
+                </TodosContext.Provider>
+
+            </div>
+
+
+        </>
+    )
+};
+
 ReactDOM.render(
-  <React.StrictMode>
+
     <App />
-  </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 

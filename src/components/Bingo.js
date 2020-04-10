@@ -26,12 +26,6 @@ export default function Bingo(){
 
             <div className="font-mono w-1/3 h-full">
 
-                <div className="font-mono bg-yellow-200 h-20">
-                    <h1 className="font-red">Yuor Choice Ball</h1>
-                    <hr className="border-2 bg-black-900"/>
-                    <p>{state.choiceBall.sort().join(",")}</p>
-                </div>
-
                 <div className="font-mono bg-purple-100 w-full">
                     <h1>History</h1>
                     <img src="https://source.unsplash.com/random" alt=""/>

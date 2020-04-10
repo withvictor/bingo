@@ -8,6 +8,7 @@ import todosReducer from "./reducer";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import Bingo from "./components/Bingo";
+import Show from "./components/Show";
 
 import * as serviceWorker from './serviceWorker';
 
@@ -19,10 +20,8 @@ const App  = () =>{
         <>
             <div className="bg-gray-300 w-full h-full">
                 <TodosContext.Provider value={{state , dispatch}}>
-                    <TodoForm />
-                    <TodoList/>
                     <Bingo/>
-
+                    <Show />
                 </TodosContext.Provider>
 
             </div>

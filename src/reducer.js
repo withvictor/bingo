@@ -92,9 +92,9 @@ export default function reducer(state ,action){
                 ...state,
             };
         ////////BINGO
-        case "ADD_BALL":
-
-            let setNum  ;
+        case "UPDATE_BALL":
+            let setNum  = 0 ;
+            let ball_Sum = 0;
             setNum = parseInt(action.ballNum) ;
             console.log(action.choiceBall.length);
             if(action.choiceBall.length === 10 ){
@@ -102,12 +102,13 @@ export default function reducer(state ,action){
                 if(action.balls[setNum].flag === true ) {
                     action.choiceBall = action.choiceBall.filter( (item, index) => action.choiceBall.indexOf(setNum) !== index );
                     action.balls[setNum].flag = false;
-
+                    state.ballSum -=setNum;
                     return {
                         ...state,
                         ballCount: state.ballCount-1,
                         balls: action.balls,
                         choiceBall:action.choiceBall,
+                        ballSum:state.ballSum
                     };
                 }else{
                     return {
@@ -121,16 +122,17 @@ export default function reducer(state ,action){
                     //要去掉
                     action.choiceBall = action.choiceBall.filter( (item, index) => action.choiceBall.indexOf(setNum) !== index );
                     action.balls[setNum].flag = false;
-
+                    state.ballSum -=setNum;
                     return {
                         ...state,
                         ballCount: state.ballCount-1,
                         balls: action.balls,
                         choiceBall:action.choiceBall,
+                        ballSum:state.ballSum
                     };
 
                 } else {
-
+                    state.ballSum+=setNum;
                     action.choiceBall[action.choiceBall.length] = setNum;
                     action.balls[setNum].flag = true;
                     return {
@@ -138,6 +140,7 @@ export default function reducer(state ,action){
                         ballCount: state.ballCount+1,
                         balls: action.balls,
                         choiceBall:action.choiceBall,
+                        ballSum:state.ballSum
                     };
                 }
             }

@@ -39,6 +39,7 @@ export default function Show(){
     //console.log(fourseason.spring);
 
     return  (
+        <>
         <div className="flex border-2 bg-purple-100 w-full h-full">
 
             <div className="flex-row font-mono bg-blue-100 w-1/3">
@@ -46,7 +47,6 @@ export default function Show(){
                 <div className="flex-row w-full">
                     <p>{state.choiceBall.sort().join(",")}</p>
                 </div>
-
             </div>
 
             <div className="flex-row font-mono bg-blue-400 w-1/3">
@@ -76,16 +76,16 @@ export default function Show(){
                 </div>
             </div>
 
-
-
             <div className="flex flex-row bg-gray-200 w-1/3">
 
-                <div className="flex flex-row  bg-gray-400  py-0 m-0 w-1/5 rounded-full" style={{backgroundColor:(kingColor2)?'red':'' }} >
-                    <span className="flex flex-row m-3 text-3xl ">木</span>
-                </div>
+
 
                 <div className="flex flex-row  bg-gray-400  py-0 m-0 w-1/5 rounded-full" style={{backgroundColor:(kingColor1)?'red':'' }} >
                     <span className="flex flex-row m-3 text-3xl">金  </span>
+                </div>
+
+                <div className="flex flex-row  bg-gray-400  py-0 m-0 w-1/5 rounded-full" style={{backgroundColor:(kingColor2)?'red':'' }} >
+                    <span className="flex flex-row m-3 text-3xl ">木</span>
                 </div>
 
                 <div className="flex flex-row  bg-gray-400  py-0 m-0 w-1/5 rounded-full" style={{backgroundColor:(kingColor3)?'red':'' }} >
@@ -93,21 +93,29 @@ export default function Show(){
                 </div>
 
                 <div className="flex flex-row  bg-gray-400  py-0 m-0 w-1/5 rounded-full" style={{backgroundColor:(kingColor4)?'red':'' }} >
-                    <span className="flex flex-row m-4 text-3xl">火</span>
+                    <span className="flex flex-row m-3 text-3xl">火</span>
                 </div>
 
                 <div className="flex flex-row  bg-gray-400  py-0 m-0 w-1/5 rounded-full" style={{backgroundColor:(kingColor5)?'red':'' }} >
-                    <span className="flex flex-row m-4 text-3xl">土</span>
+                    <span className="flex flex-row m-3 text-3xl">土</span>
                 </div>
+            </div>
+        </div>
 
+        <div className="flex flex-col border-2 bg-purple-100 w-full h-full">
 
+            <div className="flex flex-col ">
+                <span>sum</span>
+            </div>
+            <div className="flex flex-col ">
+                <span>{state.ballSum}</span>
 
             </div>
-
-
-
-
         </div>
+
+        </>
+
+
     )
 }
 

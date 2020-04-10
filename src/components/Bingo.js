@@ -8,7 +8,7 @@ export default function Bingo(){
     const handleBtn = ( n,event) =>{
 
             dispatch({
-                type : "ADD_BALL",
+                type : "UPDATE_BALL",
                 ballNum : n,
                 event : event,
                 balls : state.balls,

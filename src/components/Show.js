@@ -18,12 +18,13 @@ export default function Show(){
     let autumn=0;
     let summer=0;
     //useEffect(()=>{
+        //console.log(state.season4.spring,'');
         state.choiceBall.map((item,i) =>{
             //console.log(item,i);
             item =parseInt(item);
             if( item>=1 && item<=20){
+                //console.log(item,i);
                 spring+=1;
-                //setFourseason( {spring: fourseason.spring+1 , summer:fourseason.summer, autumn:fourseason.autumn, winter:fourseason.winter});
             }else if(item>=21 && item<=40){
                 summer+=1;
                 //setFourseason( {summer: parseInt(fourseason.summer)+1,autumn:fourseason.autumn, winter:fourseason.winter, spring:fourseason.spring});
@@ -33,9 +34,14 @@ export default function Show(){
             }else if(item>=61 && item<=80){
                 winter+=1;
                 //setFourseason( {winter : parseInt(fourseason.winter)+1, spring:fourseason.spring, summer : fourseason.summer ,autumn:fourseason.autumn });
+                // dispatch({
+                //     type : "UPDATE_SEASON",
+                //     season_type : "winter",
+                //     allSeasion:state.season4
+                // });
             }
         });
-    //},[ state]);
+    //},[ state.choiceBall]);
     //console.log(fourseason.spring);
 
     return  (
@@ -109,7 +115,9 @@ export default function Show(){
             </div>
             <div className="flex flex-col ">
                 <span>{state.ballSum}</span>
+                <p>
 
+                </p>
             </div>
         </div>
 

@@ -17,7 +17,8 @@ const TodosContext = React.createContext({
     currentTodo:{},
     ballCount:0,
     choiceBall:[],
-    ballSum:0
+    ballSum:0,
+    season4:{spring: 0 , summer:0, "autumn":0, "winter":0}
 });
 
 

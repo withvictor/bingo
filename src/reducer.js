@@ -185,6 +185,24 @@ export default function reducer(state ,action){
                 choiceBall:randomNums,
                 ballSum:ballSum
             };
+        case "UPDATE_SEASON":
+
+
+
+            if(action.season_type === "spring"){
+                console.log(action.season_type,'');
+                console.log(state.season4["winner"],'');
+                console.log('--------------------------','');
+                state.season4.winner+=1;
+            }else if(action.season_type === "winner"){
+                state.season4.winner+=1;
+            }
+
+            return {
+                ...state,
+                season4:action.allSeasion
+
+            };
         default:
             return state;
     }

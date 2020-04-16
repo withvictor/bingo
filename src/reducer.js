@@ -1,5 +1,5 @@
 import uuidv4 from 'uuid/v4'
-
+import axios from 'axios';
 const ballClass = "rounded-full border-4 p-1 border-black m-1 bg-white";
 
 export default function reducer(state ,action){
@@ -86,15 +86,56 @@ export default function reducer(state ,action){
         ////////BINGO
         case "SUBMIT_BET":
 
-            console.log(state.choiceBall.sort() );
 
-            return {
-                ...state,
-            };
+            if(action.choiceBall.length>=1) {
+                try {
+                    let params = {balls: action.choiceBall, serial: state.serial, user_id: state.user_id};
+
+                    axios.get(`http://localhost:3000/hi`, {params: params}).then(response => {
+                        //Logic goes here
+                        if (response.status === 200 && response.data[0].state === 0) {
+
+                            console.log(response.data[0].c);
+                            console.log(response.data);
+                            console.log(response.status);
+                            console.log(response.data[0].state);
+
+                        } else {
+
+                        }
+
+
+                    }).catch(error => {
+                        alert(error);
+                    });
+
+
+                } catch (err) {
+                    //setError(err)
+                }
+                console.log('----------');
+                action.ccBtns.map((item, i) => {
+                    action.ccBtns[i] = {id: i, className: ballClass, flag: false};
+                });
+                return {
+                    ...state,
+                    ccBtns: action.ccBtns,
+                    ballCount: 0,
+                    choiceBall: [],
+                    ballSum: 0
+                };
+            }else{
+                console.log('empty !!');
+                return {
+                    ...state
+                };
+            }
+
+
         ////////BINGO
         case "UPDATE_BALL":
             let setNum  = 0 ;
-            let ball_Sum = 0;
+
             setNum = parseInt(action.ballNum) ;
             console.log(action.choiceBall.length);
             if(action.choiceBall.length === 10 ){
@@ -170,13 +211,17 @@ export default function reducer(state ,action){
 
 
             action.ccBtns.map( (item,i ) => {
-                // console.log(i);
-                // ballSum+= parseInt(i);
-                action.ccBtns[i]={id: i , className:ballClass};
+
                 if (randomNums.indexOf(i)>=0){
+
                     action.ccBtns[i].flag = true;
+                    action.ccBtns[i].className = ballClass+" animated swing";
+                }else{
+                    action.ccBtns[i]={id: i , className:ballClass};
                 }
             });
+
+            console.log(randomNums);
 
             return {
                 ...state,
@@ -206,4 +251,10 @@ export default function reducer(state ,action){
         default:
             return state;
     }
+}
+
+function getResult(  datas ){
+    console.log('-------------');
+    console.log(datas);
+
 }

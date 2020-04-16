@@ -1,10 +1,10 @@
-import React, {useEffect, useContext, useState} from 'react'
+import React, { useContext} from 'react'
 import TodosContext from "../context";
 
 
 export default function Show(){
 
-    const {state , dispatch} = useContext(TodosContext);
+    const {state } = useContext(TodosContext);
     const kingColor1 = (state.ballSum >=1 && state.ballSum <=151)? true: false ;
     const kingColor2 = (state.ballSum >=152 && state.ballSum <=302)? true: false ;
     const kingColor3 = (state.ballSum >=303 && state.ballSum <=453)? true: false ;
@@ -12,37 +12,30 @@ export default function Show(){
     const kingColor5 = (state.ballSum >=605 && state.ballSum <=755)? true: false ;
 
 
-    let [fourseason, setFourseason]= useState({spring:null, summer:null, autumn:null, winter:null});
+
     let spring=0;
     let winter=0;
     let autumn=0;
     let summer=0;
-    //useEffect(()=>{
-        //console.log(state.season4.spring,'');
-        state.choiceBall.map((item,i) =>{
-            //console.log(item,i);
+
+        state.choiceBall.map((item) => {
+
             item =parseInt(item);
             if( item>=1 && item<=20){
-                //console.log(item,i);
+
                 spring+=1;
             }else if(item>=21 && item<=40){
                 summer+=1;
-                //setFourseason( {summer: parseInt(fourseason.summer)+1,autumn:fourseason.autumn, winter:fourseason.winter, spring:fourseason.spring});
+
             }else if(item>=41 && item<=60){
                 autumn+=1;
-                //setFourseason( {autumn : parseInt(fourseason.autumn)+1,winter:fourseason.winter, spring:fourseason.spring, summer : fourseason.summer });
+
             }else if(item>=61 && item<=80){
                 winter+=1;
-                //setFourseason( {winter : parseInt(fourseason.winter)+1, spring:fourseason.spring, summer : fourseason.summer ,autumn:fourseason.autumn });
-                // dispatch({
-                //     type : "UPDATE_SEASON",
-                //     season_type : "winter",
-                //     allSeasion:state.season4
-                // });
+
             }
         });
-    //},[ state.choiceBall]);
-    //console.log(fourseason.spring);
+
 
     return  (
         <>
@@ -83,8 +76,6 @@ export default function Show(){
             </div>
 
             <div className="flex flex-row bg-gray-200 w-1/3">
-
-
 
                 <div className="flex flex-row  bg-gray-400  py-0 m-0 w-1/5 rounded-full" style={{backgroundColor:(kingColor1)?'red':'' }} >
                     <span className="flex flex-row m-3 text-3xl">金  </span>

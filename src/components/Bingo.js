@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react'
+import React, {useEffect, useContext} from 'react'
 import TodosContext from "../context";
 
 
@@ -46,7 +46,7 @@ export default function Bingo(){
 
                     <button
                         className="rounded-full border-4 p-1 border-black m-1 bg-red-400"
-                        onClick={ ()=> dispatch({type:"SUBMIT_BET",choiceBall:state.choiceBall})}
+                        onClick={ ()=> dispatch({type:"SUBMIT_BET", choiceBall:state.choiceBall,ccBtns:state.balls})}
                     >
                         submit bet
                     </button>

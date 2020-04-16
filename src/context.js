@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ballClass = "rounded-full border-4 p-1 border-black m-1 bg-white";
-let balls=new Array(), todoList=new Array();
+let balls=[], todoList=[];
 
 for(var ic=1 ;ic <=2 ; ic++ ){
     todoList[ic] = {id:ic , text:"Eat "+ic, complete:false};
@@ -18,7 +18,10 @@ const TodosContext = React.createContext({
     ballCount:0,
     choiceBall:[],
     ballSum:0,
-    season4:{spring: 0 , summer:0, "autumn":0, "winter":0}
+    season4: { spring: 0 , summer:0, "autumn":0, "winter":0},
+    serial:8177818,
+    user_id:1
+
 });
 
 
